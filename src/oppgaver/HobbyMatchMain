@@ -1,0 +1,33 @@
+package oppgaver;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class HobbyMatchMain {
+	
+	public static double match(Person a, Person b) {
+        Set<String> commonHobbies = new HashSet<>(a.getHobbies());
+        commonHobbies.retainAll(b.getHobbies()); // Felles hobbyer
+        
+        int commonCount = commonHobbies.size();
+        int uniqueA = a.getHobbies().size() - commonCount;
+        int uniqueB = b.getHobbies().size() - commonCount;
+        int total = commonCount + uniqueA + uniqueB;
+        
+        return (double) (commonCount - (uniqueA + uniqueB)) / total;
+    }
+
+	public static void main(String[] args) {
+		Person arne = new Person("Arne", "jakt", "sykling", "venner", "data");
+        Person kari = new Person("Kari", "sykling", "venner", "ski", "matlaging");
+        Person per = new Person("Per", "jakt", "venner", "fiske", "data");
+
+        double arneKari = match(arne, kari);
+        double arnePer = match(arne, per);
+        double kariPer = match(kari, per);
+
+        System.out.println("Match 1 mellom Arne og Kari: " + arneKari);
+        System.out.println("Match 2 mellom Arne og Per: " + arnePer);
+        System.out.println("Match 3 mellom Kari og Per: " + kariPer);
+	}
+}
