@@ -1,0 +1,26 @@
+package oppgaver;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Person {
+	private String name;
+	private Set<String> hobbies;
+	
+	public Person(String name, String... hobbies) {
+		this.name = name;
+		this.hobbies=new HashSet<>();
+		for (String hobby : hobbies) {
+			this.hobbies.add(hobby);
+		}
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public Set<String> getHobbies(){
+		return hobbies;
+	}
+
+}
